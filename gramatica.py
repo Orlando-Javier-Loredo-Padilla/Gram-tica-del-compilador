@@ -357,13 +357,7 @@ class Argumentos(Nodo):
         pila.pop()
         globals()['argumentos'] = Node(Argumentos(self.data), parent = root)
         globals()['expresion'].parent = globals()['argumentos'] 
-        #print( globals()['auxiliarFunc'].children)
-        #print(pila[-4].cad)
-        #print(listafunciones[-1].id.cad)
-        #print(listaparametrosid[-1].tipo)
-        #for obj in listaparametrosid:
-            #if pila[-4].cad == obj.tipo:
-                #print('Si coincide, esperado ' + obj.data)
+        
     def eliminalistaarg(self):
         pila.pop()
         pila.pop()
@@ -1740,25 +1734,19 @@ class analizador:
         self.continua = True
 
     
-                #print("No encontrado")
-
-
-
-#print("Ingrese la cadena de caracteres a analizar")
-#cad = input()
 
 cad = "int menu(){\
-        int x;\
-        int z;\
-        x = 2;\
-        z = 1.5;\
-        return z;\
+        int a;\
+        int b;\
+        a = 23;\
+        b = 53;\
+        b = a + b;\
+        return b;\
         }"
 
 
-    #agregar la posibilidad de asginar valor a las variables en la r37 o r52
 
-print("Cadena ingresada: ", cad)
+print("Cadena a analizar: ", cad)
 divcad = cad.split()
 divcad.append("$")
 actual = 0
@@ -1772,11 +1760,11 @@ if globals()['banderap']!=0:
 if globals()['banderac']!=0:
     listaerroreslex.append('Error, corchetes sin cerrar ')
 divcad2 = list()
-print('------------------------')
+print('********************************************************')
 #print("Leido        Tipo        Pos")
-print('Leido', f"{'':>9}", 'Tipo', f"{'':>9}", 'Pos', f"{'':<9}")
+print('Dato', f"{'':>9}", 'Tipo', f"{'':>9}", 'Pos', f"{'':<9}")
 for objlex in listalexico:
-    print(objlex.cad, f"{'|':>11}", objlex.tipo, f"{'|':>9}", objlex.pos)
+    print(objlex.cad, f"{'|':>9}", objlex.tipo, f"{'|':>9}", objlex.pos)
     divcad2.append(objlex.cad)
 divcad.clear()    
 divcad=divcad2
@@ -1805,30 +1793,10 @@ else:
     for pre, fill, node in RenderTree(root):
         print("%s%s" % (pre, node.name))
 
-    #for obj in listaerrores:
-        #print(obj)
             
     print('Tabla de símbolos')
     print('Tipo', f"{'':>9}", 'ID', f"{'':>9}", 'Ambito', f"{'':<9}")
     print('-----------------------------------')
     for obj in listavariables:
         print(obj.data.cad, f"{'|':>11}", obj.tipo.cad, f"{'|':>9}", obj.lv)
-    #aux = Nodo('Data')
-#aux.imprimir()
-'''
-print('Variables')
-for obj in listavariables:
-    print(obj)
-print('Funciones')
-for obj in listafunciones:
-    print(obj)
-print('Definicion')
-for obj in listadefinicion:
-    print(obj)
-print('Definiciones')
-for obj in listadefiniciones:
-    print(obj)
-'''
-
-#for obj in lisreglas:
-#    print(obj.aux, obj.num, obj.elementos, obj.regla)
+ 
